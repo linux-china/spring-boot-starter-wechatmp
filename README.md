@@ -15,9 +15,14 @@ in application.properties file, please add following keys:
 
      spring.wechatmp.appId=xxxx
      spring.wechatmp.secret=yyyy
-     spring.wechatmp.token=xxx-dev
-     spring.wechatmp.aesKey=xxx-dev
+If you set token and aesKey in wechat backend, please add following settings:
      
+     spring.wechatmp.token=your-token
+     spring.wechatmp.aesKey=your-aeskey
+If you want to implement wechat payment features, please add following settings:
+     
+     spring.wechatmp.partnerId=your-partnerId
+     spring.wechatmp.partnerKey=your-partnerKey
 in your code you can use OssClient directly:
 
      @Autowired
