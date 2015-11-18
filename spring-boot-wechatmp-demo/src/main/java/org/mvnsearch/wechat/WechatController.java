@@ -22,7 +22,7 @@ public class WechatController {
 
     @RequestMapping("/login")
     public String login() {
-        String redirectUrl = "http://www.erenxueyuan.com/wechat/callback.action";
+        String redirectUrl = "http://www.foobar.com/wechat/callback.action";
         String snsapiLogin = wxMpService.oauth2buildAuthorizationUrl(redirectUrl, "snsapi_login", RandomStringUtils.randomAlphanumeric(8));
         return "redirect:" + snsapiLogin;
     }
