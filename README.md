@@ -35,4 +35,5 @@ in your code you can use OssClient directly:
 
 ### 参考
 
-* wechat开发文档: https://github.com/chanjarster/weixin-java-tools/wiki
+* 微信开放平台: https://open.weixin.qq.com/
+* Wechat接入开发文档: https://github.com/chanjarster/weixin-java-tools/wiki
