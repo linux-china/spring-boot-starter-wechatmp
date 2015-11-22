@@ -1,5 +1,6 @@
 package org.mvnsearch.wechat;
 
+import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
@@ -25,6 +26,8 @@ public class WechatController {
     @Autowired
     private WxMpService wxMpService;
     @Autowired
+    private WxMpConfigStorage wxMpConfigStorage;
+    @Autowired
     private CounterService counterService;
 
     @RequestMapping("/login")
@@ -33,6 +36,13 @@ public class WechatController {
         String state = UUID.randomUUID().toString();
         String snsapiLogin = wxMpService.oauth2buildAuthorizationUrl(redirectUrl, "snsapi_login", state);
         return "redirect:" + snsapiLogin;
+    }
+
+    @RequestMapping("/weblogin")
+    public String webLogin() {
+        String state = UUID.randomUUID().toString();
+        String callbackUrl = "http%3A%2F%2Fwww.xxxx.com%2Fwechat%2Fcallback.action";
+        return "redirect:https://open.weixin.qq.com/connect/qrconnect?appid=" + wxMpConfigStorage.getAppId() + "&redirect_uri=" + callbackUrl + "&response_type=code&scope=snsapi_login&state=" + state + "#wechat_redirect";
     }
 
     @RequestMapping("/callback")
